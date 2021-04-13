@@ -1,0 +1,57 @@
+Protel Design System Design Rule Check
+PCB File : E:\stm32pro\PCB_Project_RZ7886\PCB1.PcbDoc
+Date     : 2021/4/13
+Time     : 23:02:29
+
+Processing Rule : Room Sheet1 (Bounding Region = (1020mil, 1003.898mil, 2510mil, 1723.898mil) (InComponentClass('Sheet1'))
+Rule Violations :0
+
+Processing Rule : Rule
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Silk primitive without silk layer
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+   Violation between Track (1090mil,1110mil)(1090mil,1150mil)  Top Overlay and 
+                     Pad R1-1(1090mil,1070mil)  Multi-Layer
+   Violation between Track (1090mil,1390mil)(1090mil,1430mil)  Top Overlay and 
+                     Pad R1-2(1090mil,1470mil)  Multi-Layer
+Rule Violations :2
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+
+Violations Detected : 2
+Time Elapsed        : 00:00:00

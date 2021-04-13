@@ -1,0 +1,10 @@
+Output: PCAD Netlist
+Type  : PCADNetlist
+From  : Project [PCB_Project_RZ7886.PrjPcb]
+   Generated File[Sheet1.NET]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 22:56:06 On 2021/4/13

@@ -1,0 +1,59 @@
+{COMPONENT PROTEL.PCB
+  {ENVIRONMENT PROTEL.SCH}
+  {DETAIL
+    {SUBCOMP
+      {I RZ7886 - duplicate.PRT 1
+        {CN
+        1 PB8
+        2 PB9
+        3 GND
+        4 PWR
+        5 O1
+        6 O1
+        7 O2
+        8 O2
+        }
+      }
+      {I RAD-0.3.PRT C1
+        {CN
+        1 5V
+        2 GND
+        }
+      }
+      {I 3.2X1.6X1.1.PRT D1
+        {CN
+        1 NetD1_1
+        2 O1
+        }
+      }
+      {I 3.2X1.6X1.1.PRT D2
+        {CN
+        1 O1
+        2 NetD1_1
+        }
+      }
+      {I HDR1X6.PRT P1
+        {CN
+        1 O1
+        2 5V
+        3 PA7
+        4 PA6
+        5 GND
+        6 O2
+        }
+      }
+      {I HDR1X2.PRT P2
+        {CN
+        1 O1
+        2 O2
+        }
+      }
+      {I AXIAL-0.4.PRT R1
+        {CN
+        1 O2
+        2 NetD1_1
+        }
+      }
+    }
+  }
+}
