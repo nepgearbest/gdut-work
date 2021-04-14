@@ -1,10 +1,9 @@
-Output: PCAD Netlist
-Type  : PCADNetlist
-From  : Project [PCB_Project_RZ7886.PrjPcb]
-   Generated File[Sheet1.NET]
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [PCB_Project_RZ7886.PrjPcb]
 
 
-Files Generated   : 1
+Files Generated   : 0
 Documents Printed : 0
 
-Finished Output Generation At 22:56:06 On 2021/4/13
+Finished Output Generation At 13:01:13 On 2021/4/14
