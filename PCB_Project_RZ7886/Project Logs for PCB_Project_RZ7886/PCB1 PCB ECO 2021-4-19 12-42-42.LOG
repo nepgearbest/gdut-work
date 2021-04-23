@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=O1 Pin=D1-2
+Removed Pin From Net: NetName=O1 Pin=D2-1
+Removed Member From Class: ClassName=Sheet1 Member=D1
+Removed Member From Class: ClassName=Sheet1 Member=D2
+Added Component: Designator=LED0(LED-0805)
+Added Component: Designator=LED1(LED-0805)
+Added Pin To Net: NetName=O1 Pin=LED0-1
+Added Pin To Net: NetName=O1 Pin=LED1-2
+Added Pin To Net: NetName=NetLED0_2 Pin=LED0-2
+Added Pin To Net: NetName=NetLED0_2 Pin=LED1-1
+Added Pin To Net: NetName=NetLED0_2 Pin=R1-2
+Added Net: Name=NetLED0_2
+Added Member To Class: ClassName=Sheet1 Member=Component LED0 LED
+Added Member To Class: ClassName=Sheet1 Member=Component LED1 LED
