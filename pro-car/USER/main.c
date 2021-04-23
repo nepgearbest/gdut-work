@@ -8,12 +8,13 @@ int main()
     
   
     u16 len,x,t;
-    
+    extern u16 speed;
 	delay_init();	 
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     uart_init(115200);    //延时函数初始化	  
     pwm_init_2(0,8999,100);//频率不能太高
-
+    pulse_encode(0);
+    tim_tick(100,7200-1);//72000000/7200/100=0.01s
     while(1)
     {
         if(USART_RX_STA&0x8000)
@@ -27,6 +28,7 @@ int main()
 			}
             printf("\n\r%d",x);
             TIM_SetCompare2(TIM3,x);
+            printf("speed is %d",speed-32767);
 			printf("\r\n\r\n");//插入换行
 			USART_RX_STA=0;
         }
