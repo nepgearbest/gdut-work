@@ -1,5 +1,6 @@
 #include "sys.h" 
 #include "usart.h"
+#include "pid.h"
 //void pwm_init(u32 psc,u32 arr);//tim1 通道1
 void pwm_init_2(u32 psc,u32 arr,u16 cmp);//tim3通道2
 void speed_rpm_read(u16 *a);

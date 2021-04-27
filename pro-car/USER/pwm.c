@@ -142,6 +142,7 @@ void TIM5_IRQHandler(void)
         
         printf("speed is %d",speed);
         speed_rpm_read(&speed);
+        start_pid(speed);
         TIM_ClearITPendingBit(TIM5,TIM_IT_Update);
     }
 }

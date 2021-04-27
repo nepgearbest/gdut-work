@@ -33,3 +33,5 @@
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: pwm.h
+..\obj\main.o: pid.h
+..\obj\main.o: pid.h

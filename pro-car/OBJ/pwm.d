@@ -32,3 +32,4 @@
 ..\obj\pwm.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\pwm.o: ..\SYSTEM\usart\usart.h
 ..\obj\pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\pwm.o: pid.h

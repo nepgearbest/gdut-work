@@ -2,7 +2,7 @@
 #include "delay.h"
 #include "usart.h"
 #include "pwm.h"
-
+#include "pid.h"
 int main()
 {
     
@@ -15,6 +15,7 @@ int main()
     pwm_init_2(0,8999,100);//频率不能太高
     pulse_encode(0);
     tim_tick(7200-1,10000);//72000000/7200/10000=1s
+    pid_DeInit(2000,100);
     while(1)
     {
         if(USART_RX_STA&0x8000)

@@ -9,39 +9,39 @@
 数学公式放在这里：
 
 */
-    u16 Kp=5;
-    u16 Ki=100;
-    u16 Kd=10;
-    u16 lasterror=0;
-    u16 preerror=0;
-    u16 result=0;
-    u16 setpoint=0;
+    float Kp=0.05;
+    float Ki=0.01;
+    float Kd=0.07;
+    float lasterror=0;
+    float preerror=0;
+    float result=0;
+    float setpofloat=0;
    /*
   pid参数通过蓝牙发送接受来控制 
   */
  /*使用增量式pid*/
-  void start_pid(u16 processValue)
+  void start_pid(float processValue)
 {
-    u16 thisError;
-    u16 increment;
-    u16 pError,dError,iError;
-    thisError=setpoint-processValue;
+    float thisError;
+    float increment;
+    float pError,dError,iError;
+    thisError=setpofloat-processValue;
     pError=thisError-lasterror;
     dError=thisError-2*lasterror+preerror;
     iError=thisError;
-    increment=Kp*pError+Ki*dError+Kd*dError;
+    increment=Kp*pError+Ki*iError+Kd*dError;
     preerror=lasterror;
     lasterror=thisError;
     result+=increment;
+    printf("resudlt:%f %f\n\r",result,setpofloat);
+    TIM_SetCompare2(TIM3,-result);
 }
 /*pid初始化*/
-void pid_DeInit(void)
+void pid_DeInit(float a,float b)
 {
-    Kp=0;
-    Ki=0;
-    Kd=0;
     lasterror=0;
     preerror=0;
     result=0;
-    setpoint=0;
+    setpofloat=a;
+    result=b;
 }
