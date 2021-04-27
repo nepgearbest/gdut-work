@@ -81,7 +81,6 @@ void pulse_encode(u32 psc)//tim2 ch1
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO,ENABLE);
     
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
-    
     tim_initure.TIM_ClockDivision=TIM_CKD_DIV1;
     tim_initure.TIM_CounterMode=TIM_CounterMode_Up;
     tim_initure.TIM_Period=65535;
@@ -97,7 +96,7 @@ void pulse_encode(u32 psc)//tim2 ch1
 
     tim_iciniture.TIM_ICFilter=10;
     TIM_ICInit(TIM5,&tim_iciniture);
-    TIM_SetCounter(TIM2,0);
+    TIM_SetCounter(TIM2,0x7fff);
     TIM_ClearFlag(TIM2,TIM_IT_Update);
     TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
     TIM_Cmd(TIM2,ENABLE);
@@ -125,7 +124,7 @@ void tim_tick(u16 psc,u32 arr)//tim 5 ch1 pb6,5ms¶¨Ê±£¬arr=7200-1,psc
     tim_initure.TIM_CounterMode=TIM_CounterMode_Up;
     tim_initure.TIM_Period=arr;
     tim_initure.TIM_Prescaler=psc;
-    TIM_TimeBaseInit(TIM1,&tim_initure);
+    TIM_TimeBaseInit(TIM5,&tim_initure);
     TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);
     
     nvic_initure.NVIC_IRQChannel=TIM5_IRQn;
@@ -141,7 +140,7 @@ void TIM5_IRQHandler(void)
     if(TIM_GetITStatus(TIM5,TIM_IT_Update)!=RESET)
     {
         
-        //printf("speed is %d",speed);
+        printf("speed is %d",speed);
         speed_rpm_read(&speed);
         TIM_ClearITPendingBit(TIM5,TIM_IT_Update);
     }
@@ -149,7 +148,7 @@ void TIM5_IRQHandler(void)
 u16 getTIMX_data(TIM_TypeDef *TIMx)
 {
     u16 cnt;
-    cnt=TIMx->CNT;
+    cnt=TIMx->CNT-0x7fff;
     TIMx->CNT=0x7fff;
     return cnt;
 }
