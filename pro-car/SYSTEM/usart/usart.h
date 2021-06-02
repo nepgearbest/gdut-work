@@ -33,10 +33,11 @@ extern u8  USART_RX_BUF[USART_REC_LEN]; //½ÓÊÕ»º³å,×î´óUSART_REC_LEN¸ö×Ö½Ú.Ä©×Ö½
 extern u16 USART_RX_STA;         		//½ÓÊÕ×´Ì¬±ê¼Ç	
 //Èç¹ûÏë´®¿ÚÖĞ¶Ï½ÓÊÕ£¬Çë²»Òª×¢ÊÍÒÔÏÂºê¶¨Òå
 void uart_init(u32 bound);
-extern u16 data;
-extern u8 data_buffer[500];
-
-
+extern u8  USART_RX_BUF2[USART_REC_LEN]; //½ÓÊÕ»º³å,×î´óUSART_REC_LEN¸ö×Ö½Ú.Ä©×Ö½ÚÎª»»ĞĞ·û 
+extern u16 USART_RX_STA2;         		//½ÓÊÕ×´Ì¬±ê¼Ç	
+void USART2_Init(u32 bound);
+void usart2_send(u8 ch);
+void usart_send_data(u8 *str,u16 len);
 #endif
 
 

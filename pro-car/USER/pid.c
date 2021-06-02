@@ -1,25 +1,25 @@
 #include "pid.h"
 /*
-    Îª¼õÉÙ¸¡µãÊýµÄÊ¹ÓÃ£¬ÌØ°ÑÏµÊýÈ«²¿³ËÒÔ100
+    Îªï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½ï¿½Ø°ï¿½Ïµï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½100
 */
 /*
-    KpÎª±ÈÀýÏµÊý£¬KiÎª»ý·ÖÏµÊý£¬KdÎªÎ¢·ÖÏµÊý,ÔöÁ¿Ê½pidËã·¨
+    KpÎªï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½KiÎªï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½KdÎªÎ¢ï¿½ï¿½Ïµï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê½pidï¿½ã·¨
 */
 /*
-ÊýÑ§¹«Ê½·ÅÔÚÕâÀï£º
+ï¿½ï¿½Ñ§ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï£º
 
 */
-    float Kp=0.05;
-    float Ki=0.01;
-    float Kd=0.07;
+    float Kp=0.5;
+    float Ki=1;
+    float Kd=0.01;//Ki>>Kd
     float lasterror=0;
     float preerror=0;
     float result=0;
     float setpofloat=0;
    /*
-  pid²ÎÊýÍ¨¹ýÀ¶ÑÀ·¢ËÍ½ÓÊÜÀ´¿ØÖÆ 
+  pidï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
   */
- /*Ê¹ÓÃÔöÁ¿Ê½pid*/
+ /*Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½pid*/
   void start_pid(float processValue)
 {
     float thisError;
@@ -36,7 +36,7 @@
     printf("resudlt:%f %f\n\r",result,setpofloat);
     TIM_SetCompare2(TIM3,-result);
 }
-/*pid³õÊ¼»¯*/
+/*pidï¿½ï¿½Ê¼ï¿½ï¿½*/
 void pid_DeInit(float a,float b)
 {
     lasterror=0;
@@ -44,4 +44,34 @@ void pid_DeInit(float a,float b)
     result=0;
     setpofloat=a;
     result=b;
+}
+
+    float lasterror1=0;
+    float preerror1=0;
+    float result1=0;
+    float setpofloat1=0;
+   /*
+  pidï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+  */
+ /*Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½pid*/
+  void start_pid_1(float processValue)
+{
+    float thisError;
+    float increment;
+    float pError,dError,iError;
+    thisError=setpofloat1-processValue;
+    pError=thisError-lasterror1;
+    dError=thisError-2*lasterror1+preerror1;
+    iError=thisError;
+    increment=Kp*pError+Ki*iError+Kd*dError;
+    preerror1=lasterror1;
+    lasterror1=thisError;
+    result1+=increment;
+    printf("resudlt:%f %f\n\r",result,setpofloat);
+    TIM_SetCompare2(TIM5,-result);
+}
+void pid_DeInit_1(float a,float b)
+{
+    setpofloat1=a;
+    result1=b;
 }

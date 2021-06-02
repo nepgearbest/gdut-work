@@ -1,0 +1,11 @@
+{
+    "workbench.activityBar.iconClickBehavior": "focus",
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "files.associations": {
+        "*.wav": "plaintext",
+        "pwm.h": "c",
+        "pid.h": "c",
+        "usart.h": "c"
+    }
+}

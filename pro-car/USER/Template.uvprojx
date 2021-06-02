@@ -433,6 +433,16 @@
               <FileType>1</FileType>
               <FilePath>.\pid.c</FilePath>
             </File>
+            <File>
+              <FileName>steer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\steer.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
