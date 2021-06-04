@@ -7,5 +7,6 @@
         "pwm.h": "c",
         "pid.h": "c",
         "usart.h": "c"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }

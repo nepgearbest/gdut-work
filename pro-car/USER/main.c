@@ -21,7 +21,7 @@ int main()
     pulse_encode_x(0);
     tim_tick(7200-1,10000);//72000000/7200/10000=1                                     s
     pid_DeInit(2000,100);
-    pwm_init_steer(400-1,3600-1,270);//72000000/400/3600=50hz,90<x<450 ,1.5ms�����
+    pwm_init_steer(400-1,3600-1,270);//72000000/400/3600=50hz,90<x<270 ,1.5ms�����
     adc_init();
     l=200; 
     while(1)
@@ -64,10 +64,10 @@ int main()
                 //printf("\r\n\r\n");
             usart_send_data(test,27);
             adc_local = (float) adc_value[0]/4096*3.3;
-            printf("%f\r\n",adc_local);
+            //printf("%f\r\n",adc_local);
                // delay_ms(100);
-            //usart_send_data(gg,2);
-            //usart_send_data(gg,2);
+            usart_send_data(gg,2);
+            usart_send_data(gg,2);
         //}
         //flag=0;
         }

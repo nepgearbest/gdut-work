@@ -35,3 +35,4 @@
 ..\obj\main.o: pwm.h
 ..\obj\main.o: pid.h
 ..\obj\main.o: pid.h
+..\obj\main.o: adc.h
