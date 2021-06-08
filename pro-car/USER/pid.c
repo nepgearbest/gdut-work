@@ -33,7 +33,7 @@
     preerror=lasterror;
     lasterror=thisError;
     result+=increment;
-    //printf("resudlt:%f %f\n\r",result,setpofloat);
+    printf("resudlt:%f %f\n\r",result,setpofloat);
     TIM_SetCompare2(TIM3,-result);
 }
 /*pid��ʼ��*/
@@ -67,7 +67,7 @@ void pid_DeInit(float a,float b)
     preerror1=lasterror1;
     lasterror1=thisError;
     result1+=increment;
-   // printf("resudlt:%f %f\n\r",result,setpofloat);
+    printf("resudlt:%f %f\n\r",result,setpofloat);
     TIM_SetCompare2(TIM5,-result);
 }
 void pid_DeInit_1(float a,float b)

@@ -1,6 +1,8 @@
-
 #include "pwm.h"
+#include "adc.h"
 u16 speed=0;
+float adc_filter();
+void adc_pid(float process_value,struct pid_m *a);
 
 void pwm_init_2(u32 psc,u32 arr,u16 cmp)//tim3ͨ��2 remap->PC7 finish
 {
@@ -91,8 +93,8 @@ void tim_tick(u16 psc,u32 arr)//tim 6 ch1 pb6,5ms��ʱ��arr=7200-1,psc
     
     tim_initure.TIM_ClockDivision=TIM_CKD_DIV1;
     tim_initure.TIM_CounterMode=TIM_CounterMode_Up;
-    tim_initure.TIM_Period=arr;
-    tim_initure.TIM_Prescaler=psc;
+    tim_initure.TIM_Period=100;
+    tim_initure.TIM_Prescaler=71;
     TIM_TimeBaseInit(TIM6,&tim_initure);
     TIM_ITConfig(TIM6,TIM_IT_Update,ENABLE);
     
@@ -107,16 +109,39 @@ void tim_tick(u16 psc,u32 arr)//tim 6 ch1 pb6,5ms��ʱ��arr=7200-1,psc
 void TIM6_IRQHandler(void)
 {
     if(TIM_GetITStatus(TIM6,TIM_IT_Update)!=RESET)
-    {
-        
-        //printf("L speed is %d",speed);
-        speed_rpm_read(&speed,TIM2);
-        start_pid(speed);
-        //printf("R speed is %d",speed);
-        speed_rpm_read(&speed,TIM1);
-        start_pid_1(speed);
-        
-        TIM_ClearITPendingBit(TIM6,TIM_IT_Update);
+    {        
+			printf("L speed is %d",speed);
+			speed_rpm_read(&speed,TIM2);
+			start_pid(speed);
+			printf("R speed is %d",speed);
+			speed_rpm_read(&speed,TIM1);
+			start_pid_1(speed);
+			TIM_ClearITPendingBit(TIM6,TIM_IT_Update);
+			
+			struct pid_m tong;
+			tong.kd = 0;
+			tong.ki = 0;
+			tong.kp = 2;
+			tong.lerror = 0;
+			tong.perror = 0;
+			tong.result = 0;
+			tong.setup = 0;
+			tong.time = 0;
+			tong.time++;
+			while(1){
+				 if(tong.time ==2)
+					  ADC_SoftwareStartConvCmd(ADC1,ENABLE);
+				    float filter_try = adc_filter();
+				    tong.time = 0;
+				    adc_pid(filter_try,&tong);
+				    
+				    
+				    
+				    
+				   
+			
+			
+			  
     }
 }
 u16 getTIMX_data(TIM_TypeDef *TIMx)
