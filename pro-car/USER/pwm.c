@@ -109,12 +109,13 @@ void TIM6_IRQHandler(void)
     if(TIM_GetITStatus(TIM6,TIM_IT_Update)!=RESET)
     {
         
-        printf("L speed is %d",speed);
+        //printf("L speed is %d",speed);
         speed_rpm_read(&speed,TIM2);
         start_pid(speed);
-        printf("R speed is %d",speed);
+        //printf("R speed is %d",speed);
         speed_rpm_read(&speed,TIM1);
         start_pid_1(speed);
+        
         TIM_ClearITPendingBit(TIM6,TIM_IT_Update);
     }
 }

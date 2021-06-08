@@ -14,6 +14,8 @@ struct pid_m
     float lerror;
 };
 /*adc 的setup值因该为零，观测值为两边的电感绝对值的差，对观测值进行滤波*/
+struct pid_m tong;
+    
 void adc_init()
 {
     GPIO_InitTypeDef gpio_initure;
@@ -97,7 +99,7 @@ float adc_filter()//采用滑动平均滤波法，将每次的采样值0，1进�
     {
         adc_filter_value[i-1]=adc_filter_value[i];
     }
-    temp=adc_value[0]-adc_value[1];
+    temp=adc_value[0]-adc_value[2];
     adc_filter_value[9]=temp;
     filter_result+=temp;
     result=temp>0?filter_result/10:-filter_result/10;

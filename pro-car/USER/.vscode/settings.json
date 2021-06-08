@@ -6,7 +6,8 @@
         "*.wav": "plaintext",
         "pwm.h": "c",
         "pid.h": "c",
-        "usart.h": "c"
+        "usart.h": "c",
+        "exti.h": "c"
     },
     "git.ignoreLimitWarning": true
 }

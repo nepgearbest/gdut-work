@@ -15,12 +15,13 @@ int main()
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     uart_init(115200);    
     USART2_Init(115200);// ������ʼ��
-    pwm_init_1(0,8999,100);
-    pwm_init_2(0,8999,100);//Ƶ�ʲ���̫�� 8khz
+    pwm_init_1(0,8999,8999);
+    pwm_init_2(0,8999,8999);//Ƶ�ʲ���̫�� 8khz
     pulse_encode(0);
     pulse_encode_x(0);
-    tim_tick(7200-1,10000);//72000000/7200/10000=1                                     s
-    pid_DeInit(2000,100);
+    tim_tick(7200-1,100);//72000000/7200/10000=1                                     s
+    pid_DeInit(0,100);
+    pid_DeInit_1(0,100);
     pwm_init_steer(400-1,3600-1,270);//72000000/400/3600=50hz,90<x<270 ,1.5ms�����
     adc_init();
     l=200; 
@@ -29,18 +30,18 @@ int main()
         if(USART_RX_STA&0x8000)
 		{					   
 			len=USART_RX_STA&0x3fff;//�õ��˴ν��յ������ݳ���
-			printf("\r\n�����͵�ֵΪ:\r\n\r\n");
+			//printf("\r\n�����͵�ֵΪ:\r\n\r\n");
             x=0;
 			for(t=0;t<len;t++)
 			{
 				x+=(USART_RX_BUF[t]-'0')*pow0(len,t);
 			}
-            printf("\n\r%d",x);
+            //printf("\n\r%d",x);
             //TIM_SetCompare2(TIM3,100);
             pid_DeInit(x,100);
             //TIM_SetCompare1(TIM4,x);
-            printf("speed is %d",speed-32767);
-			printf("\r\n\r\n");//���뻻��
+            //printf("speed is %d",speed-32767);
+			//printf("\r\n\r\n");//���뻻��
 			USART_RX_STA=0;
         }
         flag=1;
@@ -54,7 +55,7 @@ int main()
             delay_ms(30);
             
         }
-        if(1)
+        if(0)
         {
             //usart2_send('7');
             delay_ms(1000);
@@ -71,6 +72,14 @@ int main()
         //}
         //flag=0;
         }
+        if(1)
+        {
+        delay_ms(1500);
+        
+        printf("i am the test \r\n");
+            
+        }
+        delay_ms(1500);
     } 
 }
 

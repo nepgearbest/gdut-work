@@ -22,15 +22,24 @@ Dialog DLL:      TARMSTM.DLL V1.64.0.0
  
 <h2>Project:</h2>
 E:\stm32pro\pro-car\USER\Template.uvprojx
-Project File Date:  06/02/2021
+Project File Date:  06/08/2021
 
 <h2>Output:</h2>
 Build target 'Template'
-compiling oled.c...
+compiling main.c...
+adc.h(4): warning:  #1295-D: Deprecated declaration adc_init - give arg types
+  void adc_init();
+adc.h(5): warning:  #1-D: last line of file ends without a newline
+  extern u32 adc_value[3];
+main.c(9): warning:  #550-D: variable "adc_local" was set but never used
+      float adc_local;
+main.c(10): warning:  #177-D: variable "i" was declared but never referenced
+      u16 len,x,t,l,flag=1,i;
+main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=13636 RO-data=512 RW-data=100 ZI-data=2084  
+Program Size: Code=8680 RO-data=336 RW-data=100 ZI-data=2116  
 FromELF: creating hex file...
-"..\OBJ\Template.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\Template.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   E:\stm32pro\pro-car\USER\RTE
