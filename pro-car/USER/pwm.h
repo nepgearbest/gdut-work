@@ -11,4 +11,19 @@ void pulse_encode_x(u32 psc);//tim1 ch1 remap->PE9,PE11 finish
 u16 pow0(u16 len,u16 t);
 extern u16 speed;
 void pwm_init_steer(u32 psc,u32 arr,u16 cmp);
+struct pid_m
+{
+    float setup;
+    float result;
+    float kp;
+    float ki;
+    float kd;
+    float perror;
+    float lerror;
+	  float time;
+	  float temp0;
+};
+
+float temp1;
+
 

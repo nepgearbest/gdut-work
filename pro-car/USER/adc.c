@@ -13,9 +13,10 @@ struct pid_m
     float perror;
     float lerror;
 };
+
+
+
 /*adc 的setup值因该为零，观测值为两边的电感绝对值的差，对观测值进行滤波*/
-struct pid_m tong;
-    
 void adc_init()
 {
     GPIO_InitTypeDef gpio_initure;
@@ -88,7 +89,8 @@ void adc_pid(float process_value,struct pid_m *a)
         TODO:
         在ITM5控制周期中断里调用pid,考虑到舵机的控制周期为20ms，每20ms启动一次ad转换(软件启动)
     */
-   TIM_SetCompare1(TIM4,-a->result);
+   TIM_SetCompare1(TIM4,180-a->result);
+	 
 }
 float adc_filter()//采用滑动平均滤波法，将每次的采样值0，1进行处理,这样会导致前10次pid的整定速度降低
 {
